@@ -16,7 +16,7 @@
     <div class="content-wrapper">  <!-- Quiz menu start -->
     <header>
       <div class="theme-toggle">
-        <div class="btn-theme"></div>
+        <div class="btn-theme"  role="button" tabindex="0" aria-pressed="false" aria-label="Toggle theme"></div>
       </div>
     </header>
     <main>
@@ -55,7 +55,8 @@
 
   <!-- Quiz completed end -->
       </article>
-      <p class="select-error" id="select-error">
+      <p class="select-error" id="select-error" 
+      role="alert" aria-atomic="true" hidden>
         <img src="assets/images/icon-error.svg" alt="error">
         Please select an answer
       </p>   

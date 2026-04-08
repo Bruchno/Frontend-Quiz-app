@@ -17,6 +17,16 @@ if (toogle_theme) {
     document.body.classList.toggle('dark-theme');
     btn_theme.classList.toggle('dark-position');
   });
+  toogle_theme.addEventListener('keydown', (e) => {
+    if (e.key === 'Enter' || e.key === ' ') {
+      e.preventDefault(); 
+      toggleTheme();
+    }
+  });
+}
+function toggleTheme() {
+  const dark = document.documentElement.classList.toggle('dark');
+  btn_theme.setAttribute('aria-pressed', String(dark));
 }
 
 document.addEventListener('DOMContentLoaded', function() {
@@ -47,8 +57,11 @@ function loadQuiz(data) {
   });
 }
 function addIcon(title, iconSrc, bg = false) {
-    const subjectDiv = document.createElement('div');
+    const subjectDiv = document.createElement('button');
+    subjectDiv.type = 'button';
     subjectDiv.classList.add('subject');
+    subjectDiv.setAttribute('aria-pressed', 'false');
+
     const iconSpan = document.createElement('span');
     iconSpan.classList.add('subject-icon');
     const img = document.createElement('img');
@@ -234,3 +247,11 @@ function restart_quizzes() {
   loadQuiz(data_json);
   // location.reload();
 }
+document.querySelectorAll('.subject[role="button"]').forEach(el => {
+    el.addEventListener('keydown', e => {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault(); // Space scroll prevention
+        el.click(); // or call the function that triggers the action
+      }
+    });
+  });

@@ -144,6 +144,8 @@ header {
   padding: 1rem;
   cursor: pointer;
   transition: transform 0.2s;
+  width: 100%;
+  border: none;
 }
 
 .subject-icon {
